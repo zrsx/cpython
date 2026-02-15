@@ -693,7 +693,7 @@ Functions
    .. versionadded:: 3.2
 
 
-.. function:: SubElement(parent, tag, attrib={}, **extra)
+.. function:: SubElement(parent, tag, /, attrib={}, **extra)
 
    Subelement factory.  This function creates an element instance, and appends
    it to an existing element.
@@ -703,6 +703,9 @@ Functions
    the subelement name.  *attrib* is an optional dictionary, containing element
    attributes.  *extra* contains additional attributes, given as keyword
    arguments.  Returns an element instance.
+
+   .. versionchanged:: 3.15
+      *parent* and *tag* are now positional-only parameters.
 
 
 .. function:: tostring(element, encoding="us-ascii", method="xml", *, \

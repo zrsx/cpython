@@ -484,6 +484,26 @@ class ElementTreeTest(unittest.TestCase):
         self.assertEqual(ET.tostring(elem),
                 b'<test a="&#13;" b="&#13;&#10;" c="&#09;&#10;&#13; " d="&#10;&#10;&#13;&#13;&#09;&#09;  " />')
 
+    def test_subelement_positional_only_parameter(self):
+        # Test SubElement positional-only parameters (gh-144270).
+        parent = ET.Element('parent')
+
+        # 'parent' and 'tag' are positional-only
+        with self.assertRaises(TypeError):
+            ET.SubElement(parent=parent, tag='fail')
+        with self.assertRaises(TypeError):
+            ET.SubElement(parent, tag='fail')
+
+        # 'attrib' can be passed as keyword
+        sub1 = ET.SubElement(parent, 'sub1', attrib={'key': 'value'})
+        self.assertEqual(sub1.get('key'), 'value')
+
+        # 'tag' and 'parent' as kwargs become XML attributes, not func params
+        sub2 = ET.SubElement(parent, 'sub2', tag='foo', parent='bar')
+        self.assertEqual(sub2.tag, 'sub2')
+        self.assertEqual(sub2.get('tag'), 'foo')
+        self.assertEqual(sub2.get('parent'), 'bar')
+
     def test_makeelement(self):
         # Test makeelement handling.
 
