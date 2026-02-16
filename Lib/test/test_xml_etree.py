@@ -484,7 +484,7 @@ class ElementTreeTest(unittest.TestCase):
         self.assertEqual(ET.tostring(elem),
                 b'<test a="&#13;" b="&#13;&#10;" c="&#09;&#10;&#13; " d="&#10;&#10;&#13;&#13;&#09;&#09;  " />')
 
-    def test_subelement_positional_only_parameter(self):
+    def test_subelement_positional_only_parameters(self):
         # Test SubElement positional-only parameters (gh-144270).
         parent = ET.Element('parent')
 
