@@ -1484,7 +1484,7 @@ Py_InitializeFromConfig(const PyConfig *config)
     }
     config = _PyInterpreterState_GetConfig(tstate->interp);
 
-    if (config->_init_main) {
+    if (config->init_main) {
         status = pyinit_main(tstate);
         if (_PyStatus_EXCEPTION(status)) {
             return status;
@@ -1527,6 +1527,18 @@ void
 Py_Initialize(void)
 {
     Py_InitializeEx(1);
+}
+
+
+PyStatus
+Py_InitializeMain(void)
+{
+    PyStatus status = _PyRuntime_Initialize();
+    if (_PyStatus_EXCEPTION(status)) {
+        return status;
+    }
+    PyThreadState *tstate = _PyThreadState_GET();
+    return pyinit_main(tstate);
 }
 
 
