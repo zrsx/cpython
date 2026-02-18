@@ -2614,7 +2614,7 @@ requires, and these work on all supported platforms.
 |  ``%S``   | Second as a zero-padded        | 00, 01, ..., 59        | \(4), |
 |           | decimal number.                |                        | \(9)  |
 +-----------+--------------------------------+------------------------+-------+
-|  ``%t``   | The tab character              | ``\t``                 | \(0)  |
+|  ``%t``   | The tab character              | ``\t``                 |       |
 |           | (``'\t'``).                    |                        |       |
 +-----------+--------------------------------+------------------------+-------+
 |  ``%T``   | ISO 8601 time format,          | 10:01:59               |       |
@@ -2706,7 +2706,8 @@ differences between platforms in handling of unsupported format specifiers.
    ``%:z`` was added for :meth:`~.datetime.strftime`.
 
 .. versionadded:: 3.15
-   ``%:z``, ``%F``, and ``%D`` were added for :meth:`~.datetime.strptime`.
+   ``%:z``, ``%F``, ``%D``, and ``%t`` were added for
+   :meth:`~.datetime.strptime`.
 
 
 Technical detail
