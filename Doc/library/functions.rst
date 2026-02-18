@@ -417,10 +417,10 @@ are always available.  They are listed here in alphabetical order.
    parts (the sign of the imaginary part is mandatory in this case).
    The string can optionally be surrounded by whitespaces and the round
    parentheses ``'('`` and ``')'``, which are ignored.
-   The string must not contain whitespace between ``'+'``, ``'-'``, the
-   ``'j'`` or ``'J'`` suffix, and the decimal number.
-   For example, ``complex('1+2j')`` is fine, but ``complex('1 + 2j')`` raises
-   :exc:`ValueError`.
+   The string must not contain whitespace between ``'+'`` (ASCII plus sign),
+   ``'-'`` (ASCII hyphen minus), ``'−'`` (Unicode minus sign, U+2212), the
+   ``'j'`` or ``'J'`` suffix, and the decimal number. For example,
+   ``complex('1+2j')`` is fine, but ``complex('1 + 2j')`` raises :exc:`ValueError`.
    More precisely, the input must conform to the :token:`~float:complexvalue`
    production rule in the following grammar, after parentheses and leading and
    trailing whitespace characters are removed:
@@ -465,6 +465,11 @@ are always available.  They are listed here in alphabetical order.
    .. deprecated:: 3.14
       Passing a complex number as the *real* or *imag* argument is now
       deprecated; it should only be passed as a single positional argument.
+
+   .. versionchanged:: next
+      ``'−'`` (Unicode minus sign, U+2212) can be now used as an
+      alternative to ``'-'`` (ASCII hyphen minus) for denoting
+      negative sign.
 
 
 .. function:: delattr(object, name, /)
@@ -781,7 +786,8 @@ are always available.  They are listed here in alphabetical order.
 
    If the argument is a string, it should contain a decimal number, optionally
    preceded by a sign, and optionally embedded in whitespace.  The optional
-   sign may be ``'+'`` or ``'-'``; a ``'+'`` sign has no effect on the value
+   sign may be ``'+'`` (ASCII plus sign), ``'-'`` (ASCII hyphen minus) or ``−``
+   (Unicode minus sign, U+2212); a ``'+'`` sign has no effect on the value
    produced.  The argument may also be a string representing a NaN
    (not-a-number), or positive or negative infinity.
    More precisely, the input must conform to the :token:`~float:floatvalue`
@@ -789,7 +795,7 @@ are always available.  They are listed here in alphabetical order.
    whitespace characters are removed:
 
    .. productionlist:: float
-      sign: "+" | "-"
+      sign: "+" | "-" | "−" <Unicode minus sign (U+2212)>
       infinity: "Infinity" | "inf"
       nan: "nan"
       digit: <a Unicode decimal digit, i.e. characters in Unicode general category Nd>
@@ -826,6 +832,11 @@ are always available.  They are listed here in alphabetical order.
 
    .. versionchanged:: 3.8
       Falls back to :meth:`~object.__index__` if :meth:`~object.__float__` is not defined.
+
+   .. versionchanged:: next
+      Added support for ``−`` (Unicode minus sign, U+2212) as an
+      alternative to ``-`` (ASCII hyphen minus) for denoting negative
+      floats.
 
 
 .. index::
@@ -1036,8 +1047,9 @@ are always available.  They are listed here in alphabetical order.
 
    If the argument is not a number or if *base* is given, then it must be a string,
    :class:`bytes`, or :class:`bytearray` instance representing an integer
-   in radix *base*.  Optionally, the string can be preceded by ``+`` or ``-``
-   (with no space in between), have leading zeros, be surrounded by whitespace,
+   in radix *base*.  Optionally, the string can be directly preceded (with no whitespaces
+   in between) by ``+`` (ASCII plus sign), ``-`` (ASCII hyphen minus) or ``−`` (Unicode
+   minus sign, U+2212), have leading zeros, be surrounded by whitespace,
    and have single underscores interspersed between digits.
 
    A base-n integer string contains digits, each representing a value from 0 to
@@ -1079,6 +1091,11 @@ are always available.  They are listed here in alphabetical order.
 
    .. versionchanged:: 3.14
       :func:`int` no longer delegates to the :meth:`~object.__trunc__` method.
+
+   .. versionchanged:: next
+      :func:`int` now supports ``−`` (Unicode minus sign, U+2212)
+      as an alternative to ``-`` (ASCII hyphen minus) for denoting
+      negative integers.
 
 .. function:: isinstance(object, classinfo, /)
 
