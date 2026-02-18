@@ -1,0 +1,1 @@
+fix variable substitution in python3.pc for Android
