@@ -34,6 +34,9 @@ asyncio is often a perfect fit for IO-bound and high-level
    :ref:`a-conceptual-overview-of-asyncio`
       Explanation of the fundamentals of asyncio.
 
+   :ref:`asyncio-chat-server-howto`
+      Build a TCP chat server with asyncio streams.
+
 asyncio provides a set of **high-level** APIs to:
 
 * :ref:`run Python coroutines <coroutine>` concurrently and
