@@ -1,0 +1,2 @@
+Removed ``windows_locale`` from :mod:`locale`, as it has not actually
+been used by :func:`locale.getdefaultlocale` since Windows 98.
