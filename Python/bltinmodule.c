@@ -2282,6 +2282,8 @@ print as builtin_print
         a file-like object (stream); defaults to the current sys.stdout.
     flush: bool = False
         whether to forcibly flush the stream.
+    pretty: object = None
+        a pretty-printing object, None, or True.
 
 Prints the values to a stream, or to sys.stdout by default.
 
@@ -2290,10 +2292,11 @@ Prints the values to a stream, or to sys.stdout by default.
 static PyObject *
 builtin_print_impl(PyObject *module, PyObject * const *objects,
                    Py_ssize_t objects_length, PyObject *sep, PyObject *end,
-                   PyObject *file, int flush)
-/*[clinic end generated code: output=38d8def56c837bcc input=ff35cb3d59ee8115]*/
+                   PyObject *file, int flush, PyObject *pretty)
+/*[clinic end generated code: output=2c26c52acf1807b9 input=e5c1e64da822042c]*/
 {
     int i, err;
+    PyObject *printer = NULL;
 
     if (file == Py_None) {
         file = PySys_GetAttr(&_Py_ID(stdout));
@@ -2331,6 +2334,30 @@ builtin_print_impl(PyObject *module, PyObject * const *objects,
         Py_DECREF(file);
         return NULL;
     }
+    if (pretty == Py_True) {
+        /* Use default `pprint.PrettyPrinter` */
+        PyObject *printer_factory = PyImport_ImportModuleAttrString("pprint", "PrettyPrinter");
+
+        if (!printer_factory) {
+            Py_DECREF(file);
+            return NULL;
+        }
+        printer = PyObject_CallNoArgs(printer_factory);
+        Py_DECREF(printer_factory);
+
+        if (!printer) {
+            Py_DECREF(file);
+            return NULL;
+        }
+    }
+    else if (pretty == Py_None) {
+        /* Don't use a pretty printer */
+    }
+    else {
+        /* Use the given object as the pretty printer */
+        printer = pretty;
+        Py_INCREF(printer);
+    }
 
     for (i = 0; i < objects_length; i++) {
         if (i > 0) {
@@ -2342,12 +2369,28 @@ builtin_print_impl(PyObject *module, PyObject * const *objects,
             }
             if (err) {
                 Py_DECREF(file);
+                Py_XDECREF(printer);
                 return NULL;
             }
         }
-        err = PyFile_WriteObject(objects[i], file, Py_PRINT_RAW);
+
+        if (printer) {
+            PyObject *prettified = PyObject_CallMethod(printer, "pformat", "O", objects[i]);
+
+            if (!prettified) {
+                Py_DECREF(file);
+                Py_DECREF(printer);
+                return NULL;
+            }
+            err = PyFile_WriteObject(prettified, file, Py_PRINT_RAW);
+            Py_XDECREF(prettified);
+        }
+        else {
+            err = PyFile_WriteObject(objects[i], file, Py_PRINT_RAW);
+        }
         if (err) {
             Py_DECREF(file);
+            Py_XDECREF(printer);
             return NULL;
         }
     }
@@ -2360,16 +2403,19 @@ builtin_print_impl(PyObject *module, PyObject * const *objects,
     }
     if (err) {
         Py_DECREF(file);
+        Py_XDECREF(printer);
         return NULL;
     }
 
     if (flush) {
         if (_PyFile_Flush(file) < 0) {
             Py_DECREF(file);
+            Py_XDECREF(printer);
             return NULL;
         }
     }
     Py_DECREF(file);
+    Py_XDECREF(printer);
 
     Py_RETURN_NONE;
 }
