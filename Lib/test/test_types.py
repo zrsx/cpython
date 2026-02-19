@@ -41,7 +41,8 @@ def clear_typing_caches():
 class TypesTests(unittest.TestCase):
 
     def test_names(self):
-        c_only_names = {'CapsuleType', 'LazyImportType'}
+        c_only_names = {'CapsuleType', 'LazyImportType',
+                        'lookup_special_method'}
         ignored = {'new_class', 'resolve_bases', 'prepare_class',
                    'get_original_bases', 'DynamicClassAttribute', 'coroutine'}
 
@@ -59,7 +60,7 @@ class TypesTests(unittest.TestCase):
             'MemberDescriptorType', 'MethodDescriptorType', 'MethodType',
             'MethodWrapperType', 'ModuleType', 'NoneType',
             'NotImplementedType', 'SimpleNamespace', 'TracebackType',
-            'UnionType', 'WrapperDescriptorType',
+            'UnionType', 'WrapperDescriptorType', 'lookup_special_method',
         }
         self.assertEqual(all_names, set(c_types.__all__))
         self.assertEqual(all_names - c_only_names, set(py_types.__all__))
@@ -726,6 +727,46 @@ class TypesTests(unittest.TestCase):
         self.assertIsNotNone(frame)
         self.assertIsInstance(frame.f_locals, types.FrameLocalsProxyType)
 
+    def test_lookup_special_method(self):
+        class CM1:
+            def __enter__(self):
+                return "__enter__ from class __dict__"
+
+        class CM2:
+            def __init__(self):
+                def __enter__(self):
+                    return "__enter__ from instance __dict__"
+                self.__enter__ = __enter__
+
+        class CM3:
+            __slots__ = ("__enter__",)
+            def __init__(self):
+                def __enter__(self):
+                    return "__enter__ from __slots__"
+                self.__enter__ = __enter__
+        cm1 = CM1()
+        meth = types.lookup_special_method(cm1, "__enter__")
+        self.assertIsNotNone(meth)
+        self.assertEqual(meth(cm1), "__enter__ from class __dict__")
+
+        meth = types.lookup_special_method(cm1, "__missing__")
+        self.assertIsNone(meth)
+
+        with self.assertRaises(TypeError):
+            types.lookup_special_method(cm1, 123)
+
+        cm2 = CM2()
+        meth = types.lookup_special_method(cm2, "__enter__")
+        self.assertIsNone(meth)
+
+        cm3 = CM3()
+        meth = types.lookup_special_method(cm3, "__enter__")
+        self.assertIsNotNone(meth)
+        self.assertEqual(meth(cm3), "__enter__ from __slots__")
+
+        meth = types.lookup_special_method([], "__len__")
+        self.assertIsNotNone(meth)
+        self.assertEqual(meth([]), 0)
 
 class UnionTests(unittest.TestCase):
 

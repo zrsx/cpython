@@ -1,0 +1,2 @@
+Expose ``_PyObject_LookupSpecialMethod()`` as
+``types.lookup_special_method(obj, attr)``.
