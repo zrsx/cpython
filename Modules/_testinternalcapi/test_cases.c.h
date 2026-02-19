@@ -1396,28 +1396,70 @@
                 stop = stack_pointer[-1];
                 start = stack_pointer[-2];
                 container = stack_pointer[-3];
-                _PyFrame_SetStackPointer(frame, stack_pointer);
-                PyObject *slice = _PyBuildSlice_ConsumeRefs(PyStackRef_AsPyObjectSteal(start),
-                    PyStackRef_AsPyObjectSteal(stop));
-                stack_pointer = _PyFrame_GetStackPointer(frame);
+                PyObject *container_o = PyStackRef_AsPyObjectBorrow(container);
+                PyObject *start_o = PyStackRef_AsPyObjectBorrow(start);
+                PyObject *stop_o = PyStackRef_AsPyObjectBorrow(stop);
                 PyObject *res_o;
-                if (slice == NULL) {
-                    res_o = NULL;
+                if ((PyList_CheckExact(container_o) ||
+                        PyTuple_CheckExact(container_o) ||
+                        PyUnicode_CheckExact(container_o)) &&
+                    (start_o == Py_None || PyLong_CheckExact(start_o)) &&
+                    (stop_o == Py_None || PyLong_CheckExact(stop_o))) {
+                    Py_ssize_t len = PyUnicode_CheckExact(container_o)
+                    ? PyUnicode_GET_LENGTH(container_o)
+                : Py_SIZE(container_o);
+                    Py_ssize_t istart, istop;
+                    _PyFrame_SetStackPointer(frame, stack_pointer);
+                    int err = _PyEval_UnpackIndices(start_o, stop_o, len,
+                        &istart, &istop);
+                    stack_pointer = _PyFrame_GetStackPointer(frame);
+                    if (err == 0) {
+                        res_o = NULL;
+                    }
+                    else if (PyList_CheckExact(container_o)) {
+                        _PyFrame_SetStackPointer(frame, stack_pointer);
+                        res_o = PyList_GetSlice(container_o, istart, istop);
+                        stack_pointer = _PyFrame_GetStackPointer(frame);
+                    }
+                    else if (PyTuple_CheckExact(container_o)) {
+                        _PyFrame_SetStackPointer(frame, stack_pointer);
+                        res_o = PyTuple_GetSlice(container_o, istart, istop);
+                        stack_pointer = _PyFrame_GetStackPointer(frame);
+                    }
+                    else {
+                        _PyFrame_SetStackPointer(frame, stack_pointer);
+                        res_o = PyUnicode_Substring(container_o, istart, istop);
+                        stack_pointer = _PyFrame_GetStackPointer(frame);
+                    }
                 }
                 else {
-                    stack_pointer += -2;
-                    ASSERT_WITHIN_STACK_BOUNDS(__FILE__, __LINE__);
-                    _PyFrame_SetStackPointer(frame, stack_pointer);
-                    res_o = PyObject_GetItem(PyStackRef_AsPyObjectBorrow(container), slice);
-                    Py_DECREF(slice);
-                    stack_pointer = _PyFrame_GetStackPointer(frame);
-                    stack_pointer += 2;
+                    PyObject *slice = PySlice_New(start_o, stop_o, NULL);
+                    if (slice == NULL) {
+                        res_o = NULL;
+                    }
+                    else {
+                        _PyFrame_SetStackPointer(frame, stack_pointer);
+                        res_o = PyObject_GetItem(container_o, slice);
+                        Py_DECREF(slice);
+                        stack_pointer = _PyFrame_GetStackPointer(frame);
+                    }
                 }
+                _PyFrame_SetStackPointer(frame, stack_pointer);
+                _PyStackRef tmp = stop;
+                stop = PyStackRef_NULL;
+                stack_pointer[-1] = stop;
+                PyStackRef_CLOSE(tmp);
+                tmp = start;
+                start = PyStackRef_NULL;
+                stack_pointer[-2] = start;
+                PyStackRef_CLOSE(tmp);
+                tmp = container;
+                container = PyStackRef_NULL;
+                stack_pointer[-3] = container;
+                PyStackRef_CLOSE(tmp);
+                stack_pointer = _PyFrame_GetStackPointer(frame);
                 stack_pointer += -3;
                 ASSERT_WITHIN_STACK_BOUNDS(__FILE__, __LINE__);
-                _PyFrame_SetStackPointer(frame, stack_pointer);
-                PyStackRef_CLOSE(container);
-                stack_pointer = _PyFrame_GetStackPointer(frame);
                 if (res_o == NULL) {
                     JUMP_TO_LABEL(error);
                 }

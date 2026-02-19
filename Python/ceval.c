@@ -2922,6 +2922,26 @@ _PyEval_SliceIndexNotNone(PyObject *v, Py_ssize_t *pi)
     return 1;
 }
 
+int
+_PyEval_UnpackIndices(PyObject *start, PyObject *stop,
+                      Py_ssize_t len,
+                      Py_ssize_t *istart, Py_ssize_t *istop)
+{
+    if (len < 0) {
+        return 0;
+    }
+    *istart = 0;
+    *istop = PY_SSIZE_T_MAX;
+    if (!_PyEval_SliceIndex(start, istart)) {
+        return 0;
+    }
+    if (!_PyEval_SliceIndex(stop, istop)) {
+        return 0;
+    }
+    PySlice_AdjustIndices(len, istart, istop, 1);
+    return 1;
+}
+
 PyObject *
 _PyEval_ImportName(PyThreadState *tstate, PyObject *builtins,
             PyObject *globals, PyObject *locals, PyObject *name,
