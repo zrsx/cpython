@@ -448,12 +448,14 @@ class TestCopy(unittest.TestCase):
 
     def test_deepcopy_keepalive(self):
         memo = {}
+        memo[...] = []
         x = []
         y = copy.deepcopy(x, memo)
-        self.assertIs(memo[id(memo)][0], x)
+        self.assertIs(memo[...][0], x)
 
     def test_deepcopy_dont_memo_immutable(self):
         memo = {}
+        memo[...] = []
         x = [1, 2, 3, 4]
         y = copy.deepcopy(x, memo)
         self.assertEqual(y, x)
@@ -461,6 +463,7 @@ class TestCopy(unittest.TestCase):
         self.assertEqual(len(memo), 2)
 
         memo = {}
+        memo[...] = []
         x = [(1, 2)]
         y = copy.deepcopy(x, memo)
         self.assertEqual(y, x)
