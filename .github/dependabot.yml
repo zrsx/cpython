@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "skip issue"
       - "skip news"
@@ -18,15 +18,45 @@ updates:
       # highest-risk window immediately after new releases.
       default-days: 14
     rebase-strategy: auto
-    target-branch:
-      - main
-      - 3.14
-      - 3.13
+    target-branch: "main"
     commit-message:
       prefix: ""
       include: scope
-    pull-request-title:
-      prefix: "[{target_branch}] "
+    groups:
+      github-actions:
+        patterns:
+          - ".*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "skip issue"
+      - "skip news"
+    cooldown:
+      default-days: 14
+    rebase-strategy: auto
+    target-branch: "3.14"
+    commit-message:
+      prefix: "[3.14]"
+      include: scope
+    groups:
+      github-actions:
+        patterns:
+          - ".*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "skip issue"
+      - "skip news"
+    cooldown:
+      default-days: 14
+    rebase-strategy: auto
+    target-branch: "3.13"
+    commit-message:
+      prefix: "[3.13]"
       include: scope
     groups:
       github-actions:
@@ -35,22 +65,52 @@ updates:
   - package-ecosystem: "pip"
     directory: "/Tools/"
     schedule:
-      interval: "monthly"
+      interval: "weekly"
     labels:
       - "skip issue"
       - "skip news"
     cooldown:
       default-days: 14
     rebase-strategy: auto
-    target-branch:
-      - main
-      - 3.14
-      - 3.13
+    target-branch: "main"
     commit-message:
       prefix: ""
       include: scope
-    pull-request-title:
-      prefix: "[{target_branch}] "
+    groups:
+      pip-updates:
+        patterns:
+          - ".*"
+  - package-ecosystem: "pip"
+    directory: "/Tools/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "skip issue"
+      - "skip news"
+    cooldown:
+      default-days: 14
+    rebase-strategy: auto
+    target-branch: "3.14"
+    commit-message:
+      prefix: "[3.14]"
+      include: scope
+    groups:
+      pip-updates:
+        patterns:
+          - ".*"
+  - package-ecosystem: "pip"
+    directory: "/Tools/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "skip issue"
+      - "skip news"
+    cooldown:
+      default-days: 14
+    rebase-strategy: auto
+    target-branch: "3.13"
+    commit-message:
+      prefix: "[3.13]"
       include: scope
     groups:
       pip-updates:
