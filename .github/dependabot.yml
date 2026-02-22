@@ -33,6 +33,11 @@ updates:
     labels:
       - "skip issue"
       - "skip news"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
     cooldown:
       default-days: 14
     rebase-strategy: auto
@@ -51,6 +56,11 @@ updates:
     labels:
       - "skip issue"
       - "skip news"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
     cooldown:
       default-days: 14
     rebase-strategy: auto
