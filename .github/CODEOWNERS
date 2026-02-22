@@ -60,20 +60,20 @@
 # ----------------------------------------------------------------------------
 
 # Azure Pipelines
-.azure-pipelines/ @Aasyaco @Ansyso @plfj @George-Codr
+.azure-pipelines/             @AA-Turner
 
 # GitHub & related scripts
-.github/ @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/compute-changes.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_tools/test_compute_changes.py @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/verify_ensurepip_wheels.py @Aasyaco @Ansyso @plfj @George-Codr
+.github/                                    @ezio-melotti @hugovk @AA-Turner @webknjaz
+Tools/build/compute-changes.py              @AA-Turner @hugovk @webknjaz
+Lib/test/test_tools/test_compute_changes.py @AA-Turner @hugovk @webknjaz
+Tools/build/verify_ensurepip_wheels.py      @AA-Turner @pfmoore @pradyunsg
 
 # Pre-commit
-.pre-commit-config.yaml @Aasyaco @Ansyso @plfj @George-Codr
-.ruff.toml @Aasyaco @Ansyso @plfj @George-Codr
+.pre-commit-config.yaml       @hugovk
+.ruff.toml                    @hugovk @AlexWaygood @AA-Turner
 
 # Patchcheck
-Tools/patchcheck/ @Aasyaco @Ansyso @plfj @George-Codr
+Tools/patchcheck/             @AA-Turner
 
 
 # ----------------------------------------------------------------------------
@@ -81,15 +81,15 @@ Tools/patchcheck/ @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # Autotools
-configure* @Aasyaco @Ansyso @plfj @George-Codr
-Makefile.pre.in @Aasyaco @Ansyso @plfj @George-Codr
-Modules/makesetup @Aasyaco @Ansyso @plfj @George-Codr
-Modules/Setup* @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/regen-configure.sh @Aasyaco @Ansyso @plfj @George-Codr
+configure*                       @erlend-aasland @corona10 @AA-Turner @emmatyping
+Makefile.pre.in                  @erlend-aasland @AA-Turner @emmatyping
+Modules/makesetup                @erlend-aasland @AA-Turner @emmatyping
+Modules/Setup*                   @erlend-aasland @AA-Turner @emmatyping
+Tools/build/regen-configure.sh   @AA-Turner
 
 # generate-build-details
-Tools/build/generate-build-details.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_build_details.py @Aasyaco @Ansyso @plfj @George-Codr
+Tools/build/generate-build-details.py   @FFY00
+Lib/test/test_build_details.py          @FFY00
 
 
 # ----------------------------------------------------------------------------
@@ -97,23 +97,23 @@ Lib/test/test_build_details.py @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # Internal Docs
-InternalDocs/ @Aasyaco @Ansyso @plfj @George-Codr
+InternalDocs/                 @AA-Turner
 
 # Tools, Configuration, etc
-Doc/Makefile @Aasyaco @Ansyso @plfj @George-Codr
-Doc/_static/ @Aasyaco @Ansyso @plfj @George-Codr
-Doc/conf.py @Aasyaco @Ansyso @plfj @George-Codr
-Doc/make.bat @Aasyaco @Ansyso @plfj @George-Codr
-Doc/requirements.txt @Aasyaco @Ansyso @plfj @George-Codr
-Doc/tools/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/Makefile                  @AA-Turner @hugovk
+Doc/_static/                  @AA-Turner @hugovk
+Doc/conf.py                   @AA-Turner @hugovk
+Doc/make.bat                  @AA-Turner @hugovk
+Doc/requirements.txt          @AA-Turner @hugovk
+Doc/tools/                    @AA-Turner @hugovk
 
 # PR Previews
-.readthedocs.yml @Aasyaco @Ansyso @plfj @George-Codr
+.readthedocs.yml              @AA-Turner
 
 # Sections
-Doc/c-api/ @Aasyaco @Ansyso @plfj @George-Codr
-Doc/reference/ @Aasyaco @Ansyso @plfj @George-Codr
-Doc/whatsnew/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/c-api/                    @ZeroIntensity
+Doc/reference/                @willingc @AA-Turner
+Doc/whatsnew/                 @AA-Turner
 
 
 # ----------------------------------------------------------------------------
@@ -121,32 +121,32 @@ Doc/whatsnew/ @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # Argument Clinic
-Tools/clinic/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_clinic.py @Aasyaco @Ansyso @plfj @George-Codr
-Doc/howto/clinic.rst @Aasyaco @Ansyso @plfj @George-Codr
+Tools/clinic/                 @erlend-aasland @AA-Turner
+Lib/test/test_clinic.py       @erlend-aasland @AA-Turner
+Doc/howto/clinic.rst          @erlend-aasland @AA-Turner
 
 # C Analyser
-Tools/c-analyzer/ @Aasyaco @Ansyso @plfj @George-Codr
+Tools/c-analyzer/             @ericsnowcurrently
 
 # C API Documentation Checks
-Tools/check-c-api-docs/ @Aasyaco @Ansyso @plfj @George-Codr
+Tools/check-c-api-docs/       @ZeroIntensity
 
 # Fuzzing
-Modules/_xxtestfuzz/ @Aasyaco @Ansyso @plfj @George-Codr
+Modules/_xxtestfuzz/          @ammaraskar
 
 # Limited C API & Stable ABI
-Doc/c-api/stable.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/data/*.abi @Aasyaco @Ansyso @plfj @George-Codr
-Misc/stable_abi.toml @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/stable_abi.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/c-api/stable.rst          @encukou
+Doc/data/*.abi                @encukou
+Misc/stable_abi.toml          @encukou
+Tools/build/stable_abi.py     @encukou
 
 # SBOM
-Misc/externals.spdx.json @Aasyaco @Ansyso @plfj @George-Codr
-Misc/sbom.spdx.json @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/generate_sbom.py @Aasyaco @Ansyso @plfj @George-Codr
+Misc/externals.spdx.json      @sethmlarson
+Misc/sbom.spdx.json           @sethmlarson
+Tools/build/generate_sbom.py  @sethmlarson
 
 # ABI check
-Misc/libabigail.abignore @Aasyaco @Ansyso @plfj @George-Codr
+Misc/libabigail.abignore      @encukou
 
 
 # ----------------------------------------------------------------------------
@@ -154,45 +154,45 @@ Misc/libabigail.abignore @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # Android
-Android/ @Aasyaco @Ansyso @plfj @George-Codr
-Doc/using/android.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/_android_support.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_android.py @Aasyaco @Ansyso @plfj @George-Codr
+Android/                      @mhsmith @freakboy3742
+Doc/using/android.rst         @mhsmith @freakboy3742
+Lib/_android_support.py       @mhsmith @freakboy3742
+Lib/test/test_android.py      @mhsmith @freakboy3742
 
 # iOS
-Doc/using/ios.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/_ios_support.py @Aasyaco @Ansyso @plfj @George-Codr
-Apple/ @Aasyaco @Ansyso @plfj @George-Codr
-iOS/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/using/ios.rst             @freakboy3742
+Lib/_ios_support.py           @freakboy3742
+Apple/                        @freakboy3742
+iOS/                          @freakboy3742
 
 # macOS
-Mac/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/_osx_support.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test__osx_support.py @Aasyaco @Ansyso @plfj @George-Codr
+Mac/                          @python/macos-team
+Lib/_osx_support.py           @python/macos-team
+Lib/test/test__osx_support.py @python/macos-team
 
 # WebAssembly
-Tools/wasm/README.md @Aasyaco @Ansyso @plfj @George-Codr
+Tools/wasm/README.md          @brettcannon @freakboy3742 @emmatyping
 
 # WebAssembly (Emscripten)
-Tools/wasm/config.site-wasm32-emscripten @Aasyaco @Ansyso @plfj @George-Codr
-Tools/wasm/emscripten @Aasyaco @Ansyso @plfj @George-Codr
+Tools/wasm/config.site-wasm32-emscripten  @freakboy3742 @emmatyping
+Tools/wasm/emscripten                     @freakboy3742 @emmatyping
 
 # WebAssembly (WASI)
-Platforms/WASI @Aasyaco @Ansyso @plfj @George-Codr
-Tools/wasm/wasi-env @Aasyaco @Ansyso @plfj @George-Codr
-Tools/wasm/wasi.py @Aasyaco @Ansyso @plfj @George-Codr
-Tools/wasm/wasi @Aasyaco @Ansyso @plfj @George-Codr
+Platforms/WASI                @brettcannon @emmatyping @savannahostrowski
+Tools/wasm/wasi-env           @brettcannon @emmatyping @savannahostrowski
+Tools/wasm/wasi.py            @brettcannon @emmatyping @savannahostrowski
+Tools/wasm/wasi               @brettcannon @emmatyping @savannahostrowski
 
 # Windows
-PC/ @Aasyaco @Ansyso @plfj @George-Codr
-PCbuild/ @Aasyaco @Ansyso @plfj @George-Codr
+PC/                           @python/windows-team
+PCbuild/                      @python/windows-team
 
 # Windows installer packages
-Tools/msi/ @Aasyaco @Ansyso @plfj @George-Codr
-Tools/nuget/ @Aasyaco @Ansyso @plfj @George-Codr
+Tools/msi/                    @python/windows-team
+Tools/nuget/                  @python/windows-team
 
 # Windows Launcher
-PC/launcher.c @Aasyaco @Ansyso @plfj @George-Codr
+PC/launcher.c                 @python/windows-team @vsajip
 
 
 # ----------------------------------------------------------------------------
@@ -200,162 +200,162 @@ PC/launcher.c @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # AST
-Lib/_ast_unparse.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/ast.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_ast/ @Aasyaco @Ansyso @plfj @George-Codr
-Parser/asdl.py @Aasyaco @Ansyso @plfj @George-Codr
-Parser/asdl_c.py @Aasyaco @Ansyso @plfj @George-Codr
-Python/ast.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/ast_preprocess.c @Aasyaco @Ansyso @plfj @George-Codr
+Lib/_ast_unparse.py           @isidentical @JelleZijlstra @eclips4 @tomasr8
+Lib/ast.py                    @isidentical @JelleZijlstra @eclips4 @tomasr8
+Lib/test/test_ast/            @eclips4 @tomasr8
+Parser/asdl.py                @isidentical @JelleZijlstra @eclips4 @tomasr8
+Parser/asdl_c.py              @isidentical @JelleZijlstra @eclips4 @tomasr8
+Python/ast.c                  @isidentical @JelleZijlstra @eclips4 @tomasr8
+Python/ast_preprocess.c       @isidentical @eclips4 @tomasr8
 
 # Built-in types
-Objects/call.c @Aasyaco @Ansyso @plfj @George-Codr
-Objects/codeobject.c @Aasyaco @Ansyso @plfj @George-Codr
-Objects/dict* @Aasyaco @Ansyso @plfj @George-Codr
-Objects/frameobject.c @Aasyaco @Ansyso @plfj @George-Codr
-**/*genobject* @Aasyaco @Ansyso @plfj @George-Codr
-Objects/object.c @Aasyaco @Ansyso @plfj @George-Codr
-Objects/set* @Aasyaco @Ansyso @plfj @George-Codr
-Objects/type* @Aasyaco @Ansyso @plfj @George-Codr
-Objects/typevarobject.c @Aasyaco @Ansyso @plfj @George-Codr
-Objects/unionobject.c @Aasyaco @Ansyso @plfj @George-Codr
+Objects/call.c                @markshannon
+Objects/codeobject.c          @markshannon
+Objects/dict*                 @methane @markshannon
+Objects/frameobject.c         @markshannon
+**/*genobject*                @markshannon
+Objects/object.c              @ZeroIntensity
+Objects/set*                  @rhettinger
+Objects/type*                 @markshannon
+Objects/typevarobject.c       @JelleZijlstra
+Objects/unionobject.c         @JelleZijlstra
 
 # Byte code interpreter ('the eval loop')
-Python/bytecodes.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/ceval* @Aasyaco @Ansyso @plfj @George-Codr
-Tools/cases_generator/ @Aasyaco @Ansyso @plfj @George-Codr
+Python/bytecodes.c            @markshannon
+Python/ceval*                 @markshannon
+Tools/cases_generator/        @markshannon
 
 # Compiler (AST to byte code)
-Python/assemble.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/codegen.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/compile.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/flowgraph.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/instruction_sequence.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/symtable.c @Aasyaco @Ansyso @plfj @George-Codr
+Python/assemble.c             @markshannon @iritkatriel
+Python/codegen.c              @markshannon @iritkatriel
+Python/compile.c              @markshannon @iritkatriel
+Python/flowgraph.c            @markshannon @iritkatriel
+Python/instruction_sequence.c @iritkatriel
+Python/symtable.c             @JelleZijlstra @carljm
 
 # Context variables & HAMT
-**/contextvars* @Aasyaco @Ansyso @plfj @George-Codr
-**/*hamt* @Aasyaco @Ansyso @plfj @George-Codr
-Include/cpython/context.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_context.h @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_context.py @Aasyaco @Ansyso @plfj @George-Codr
-Python/context.c @Aasyaco @Ansyso @plfj @George-Codr
+**/contextvars*                     @1st1
+**/*hamt*                           @1st1
+Include/cpython/context.h           @1st1
+Include/internal/pycore_context.h   @1st1
+Lib/test/test_context.py            @1st1
+Python/context.c                    @1st1
 
 # Core Modules
-**/*bltinmodule* @Aasyaco @Ansyso @plfj @George-Codr
-**/*sysmodule* @Aasyaco @Ansyso @plfj @George-Codr
+**/*bltinmodule*              @ericsnowcurrently
+**/*sysmodule*                @ericsnowcurrently
 
 # Exceptions
-Lib/test/test_except*.py @Aasyaco @Ansyso @plfj @George-Codr
-Objects/exceptions.c @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_except*.py      @iritkatriel
+Objects/exceptions.c          @iritkatriel
 
 # Getpath
-Lib/test/test_getpath.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/getpath* @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_getpath.py      @FFY00
+Modules/getpath*              @FFY00
 
 # Hashing / ``hash()`` and related
-Include/cpython/pyhash.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_pyhash.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/pyhash.h @Aasyaco @Ansyso @plfj @George-Codr
-Python/pyhash.c @Aasyaco @Ansyso @plfj @George-Codr
+Include/cpython/pyhash.h         @gpshead @picnixz
+Include/internal/pycore_pyhash.h @gpshead @picnixz
+Include/pyhash.h                 @gpshead @picnixz
+Python/pyhash.c                  @gpshead @picnixz
 
 # The import system (including importlib)
-**/*import* @Aasyaco @Ansyso @plfj @George-Codr
-Python/import.c @Aasyaco @Ansyso @plfj @George-Codr
-**/*freeze* @Aasyaco @Ansyso @plfj @George-Codr
-**/*frozen* @Aasyaco @Ansyso @plfj @George-Codr
-**/*modsupport* @Aasyaco @Ansyso @plfj @George-Codr
-**/*modulefinder* @Aasyaco @Ansyso @plfj @George-Codr
-**/*moduleobject* @Aasyaco @Ansyso @plfj @George-Codr
-**/*multiphase* @Aasyaco @Ansyso @plfj @George-Codr
-**/*pkgutil* @Aasyaco @Ansyso @plfj @George-Codr
-**/*pythonrun* @Aasyaco @Ansyso @plfj @George-Codr
-**/*runpy* @Aasyaco @Ansyso @plfj @George-Codr
-**/*singlephase* @Aasyaco @Ansyso @plfj @George-Codr
-Doc/c-api/module.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_module/ @Aasyaco @Ansyso @plfj @George-Codr
-Python/dynload_*.c @Aasyaco @Ansyso @plfj @George-Codr
+**/*import*                   @brettcannon @ericsnowcurrently @ncoghlan @warsaw
+Python/import.c               @brettcannon @ericsnowcurrently @ncoghlan @warsaw @kumaraditya303
+**/*freeze*                   @ericsnowcurrently
+**/*frozen*                   @ericsnowcurrently
+**/*modsupport*               @ericsnowcurrently
+**/*modulefinder*             @ericsnowcurrently
+**/*moduleobject*             @ericsnowcurrently
+**/*multiphase*               @ericsnowcurrently
+**/*pkgutil*                  @ericsnowcurrently
+**/*pythonrun*                @ericsnowcurrently
+**/*runpy*                    @ericsnowcurrently
+**/*singlephase*              @ericsnowcurrently
+Doc/c-api/module.rst          @ericsnowcurrently
+Lib/test/test_module/         @ericsnowcurrently
+Python/dynload_*.c            @ericsnowcurrently
 
 # Initialisation
-**/*initconfig* @Aasyaco @Ansyso @plfj @George-Codr
-**/*pathconfig* @Aasyaco @Ansyso @plfj @George-Codr
-**/*preconfig* @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/sys_path_init.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/c-api/init_config.rst @Aasyaco @Ansyso @plfj @George-Codr
+**/*initconfig*               @ericsnowcurrently
+**/*pathconfig*               @ericsnowcurrently
+**/*preconfig*                @ericsnowcurrently
+Doc/library/sys_path_init.rst @FFY00
+Doc/c-api/init_config.rst     @FFY00
 
 # Interpreter main program
-Modules/main.c @Aasyaco @Ansyso @plfj @George-Codr
-Programs/_bootstrap_python.c @Aasyaco @Ansyso @plfj @George-Codr
-Programs/python.c @Aasyaco @Ansyso @plfj @George-Codr
+Modules/main.c                @ericsnowcurrently
+Programs/_bootstrap_python.c  @ericsnowcurrently
+Programs/python.c             @ericsnowcurrently
 
 # JIT
-Include/internal/pycore_jit.h @Aasyaco @Ansyso @plfj @George-Codr
-Python/jit.c @Aasyaco @Ansyso @plfj @George-Codr
-Tools/jit/ @Aasyaco @Ansyso @plfj @George-Codr
-InternalDocs/jit.md @Aasyaco @Ansyso @plfj @George-Codr
+Include/internal/pycore_jit.h @brandtbucher @savannahostrowski @diegorusso
+Python/jit.c                  @brandtbucher @savannahostrowski @diegorusso
+Tools/jit/                    @brandtbucher @savannahostrowski @diegorusso
+InternalDocs/jit.md           @brandtbucher @savannahostrowski @diegorusso @AA-Turner
 
 # Lazy imports (PEP 810)
-Objects/lazyimportobject.c @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_lazyimportobject.h @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_import/test_lazy_imports.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_import/data/lazy_imports/ @Aasyaco @Ansyso @plfj @George-Codr
+Objects/lazyimportobject.c                  @yhg1s @DinoV @pablogsal
+Include/internal/pycore_lazyimportobject.h  @yhg1s @DinoV @pablogsal
+Lib/test/test_import/test_lazy_imports.py   @yhg1s @DinoV @pablogsal
+Lib/test/test_import/data/lazy_imports/     @yhg1s @DinoV @pablogsal
 
 # Micro-op / μop / Tier 2 Optimiser
-Python/optimizer.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/optimizer_analysis.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/optimizer_bytecodes.c @Aasyaco @Ansyso @plfj @George-Codr
-Python/optimizer_symbols.c @Aasyaco @Ansyso @plfj @George-Codr
+Python/optimizer.c            @markshannon @Fidget-Spinner
+Python/optimizer_analysis.c   @markshannon @tomasr8 @Fidget-Spinner @savannahostrowski
+Python/optimizer_bytecodes.c  @markshannon @tomasr8 @Fidget-Spinner @savannahostrowski
+Python/optimizer_symbols.c    @markshannon @tomasr8 @Fidget-Spinner @savannahostrowski
 
 # Parser, Lexer, and Grammar
-Grammar/python.gram @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_peg_generator/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_tokenize.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/tokenize.py @Aasyaco @Ansyso @plfj @George-Codr
-Parser/ @Aasyaco @Ansyso @plfj @George-Codr
-Tools/peg_generator/ @Aasyaco @Ansyso @plfj @George-Codr
+Grammar/python.gram           @pablogsal @lysnikolaou
+Lib/test/test_peg_generator/  @pablogsal @lysnikolaou
+Lib/test/test_tokenize.py     @pablogsal @lysnikolaou
+Lib/tokenize.py               @pablogsal @lysnikolaou
+Parser/                       @pablogsal @lysnikolaou
+Tools/peg_generator/          @pablogsal @lysnikolaou
 
 # Runtime state/lifecycle
-**/*gil* @Aasyaco @Ansyso @plfj @George-Codr
-**/*pylifecycle* @Aasyaco @Ansyso @plfj @George-Codr
-**/*pystate* @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_*_init.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_*_state.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_atexit.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_freelist.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_global_objects.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_interp.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_obmalloc.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_pymem.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_runtime.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_stackref.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_tstate.h @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/generate_global_objects.py @Aasyaco @Ansyso @plfj @George-Codr
+**/*gil*                      @ericsnowcurrently
+**/*pylifecycle*              @ericsnowcurrently @ZeroIntensity
+**/*pystate*                  @ericsnowcurrently @ZeroIntensity
+Include/internal/pycore_*_init.h          @ericsnowcurrently
+Include/internal/pycore_*_state.h         @ericsnowcurrently
+Include/internal/pycore_atexit.h          @ericsnowcurrently
+Include/internal/pycore_freelist.h        @ericsnowcurrently
+Include/internal/pycore_global_objects.h  @ericsnowcurrently
+Include/internal/pycore_interp.h          @ericsnowcurrently
+Include/internal/pycore_obmalloc.h        @ericsnowcurrently
+Include/internal/pycore_pymem.h           @ericsnowcurrently
+Include/internal/pycore_runtime.h         @ericsnowcurrently
+Include/internal/pycore_stackref.h        @Fidget-Spinner
+Include/internal/pycore_tstate.h          @ericsnowcurrently
+Tools/build/generate_global_objects.py    @ericsnowcurrently
 
 # Remote Debugging
-Python/remote_debug.h @Aasyaco @Ansyso @plfj @George-Codr
-Python/remote_debugging.c @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_remote_debugging/ @Aasyaco @Ansyso @plfj @George-Codr
+Python/remote_debug.h               @pablogsal
+Python/remote_debugging.c           @pablogsal
+Modules/_remote_debugging/          @pablogsal
 
 # Sub-Interpreters
-**/*crossinterp* @Aasyaco @Ansyso @plfj @George-Codr
-**/*interpreteridobject.* @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/concurrent.interpreters.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/concurrent/futures/interpreter.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/concurrent/interpreters/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/support/channels.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test__interp*.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_interpreters/ @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_interp*module.c @Aasyaco @Ansyso @plfj @George-Codr
+**/*crossinterp*                          @ericsnowcurrently
+**/*interpreteridobject.*                 @ericsnowcurrently
+Doc/library/concurrent.interpreters.rst   @ericsnowcurrently
+Lib/concurrent/futures/interpreter.py     @ericsnowcurrently
+Lib/concurrent/interpreters/              @ericsnowcurrently
+Lib/test/support/channels.py              @ericsnowcurrently
+Lib/test/test__interp*.py                 @ericsnowcurrently
+Lib/test/test_interpreters/               @ericsnowcurrently
+Modules/_interp*module.c                  @ericsnowcurrently
 
 # Template string literals (t-strings)
-Lib/test/test_tstring.py @Aasyaco @Ansyso @plfj @George-Codr
-Objects/interpolationobject.c @Aasyaco @Ansyso @plfj @George-Codr
-Objects/templateobject.c @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_tstring.py      @lysnikolaou
+Objects/interpolationobject.c @lysnikolaou
+Objects/templateobject.c      @lysnikolaou
 
 # Tests
-Lib/test/test_patma.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_type_*.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_capi/test_misc.py @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_patma.py           @brandtbucher
+Lib/test/test_type_*.py          @JelleZijlstra
+Lib/test/test_capi/test_misc.py  @markshannon
 
 
 # ----------------------------------------------------------------------------
@@ -363,281 +363,281 @@ Lib/test/test_capi/test_misc.py @Aasyaco @Ansyso @plfj @George-Codr
 # ----------------------------------------------------------------------------
 
 # Annotationlib
-Doc/library/annotationlib.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/annotationlib.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_annotationlib.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/annotationlib.rst    @JelleZijlstra
+Lib/annotationlib.py             @JelleZijlstra
+Lib/test/test_annotationlib.py   @JelleZijlstra
 
 # Argparse
-Doc/**/argparse*.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/argparse.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_argparse.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/**/argparse*.rst          @savannahostrowski
+Lib/argparse.py               @savannahostrowski
+Lib/test/test_argparse.py     @savannahostrowski
 
 # Asyncio
-Doc/library/asyncio*.rst @Aasyaco @Ansyso @plfj @George-Codr
-InternalDocs/asyncio.md @Aasyaco @Ansyso @plfj @George-Codr
-Lib/asyncio/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_asyncio/ @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_asynciomodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/asyncio*.rst      @1st1 @asvetlov @kumaraditya303 @willingc
+InternalDocs/asyncio.md       @1st1 @asvetlov @kumaraditya303 @willingc @AA-Turner
+Lib/asyncio/                  @1st1 @asvetlov @kumaraditya303 @willingc
+Lib/test/test_asyncio/        @1st1 @asvetlov @kumaraditya303 @willingc
+Modules/_asynciomodule.c      @1st1 @asvetlov @kumaraditya303 @willingc
 
 # Bisect
-Doc/library/bisect.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/bisect.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_bisect.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_bisectmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/bisect.rst        @rhettinger
+Lib/bisect.py                 @rhettinger
+Lib/test/test_bisect.py       @rhettinger
+Modules/_bisectmodule.c       @rhettinger
 
 # Calendar
-Lib/calendar.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_calendar.py @Aasyaco @Ansyso @plfj @George-Codr
+Lib/calendar.py               @AA-Turner
+Lib/test/test_calendar.py     @AA-Turner
 
 # Cryptographic Primitives and Applications
-**/*hashlib* @Aasyaco @Ansyso @plfj @George-Codr
-**/*hashopenssl* @Aasyaco @Ansyso @plfj @George-Codr
-**/*hmac* @Aasyaco @Ansyso @plfj @George-Codr
-**/*ssl* @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_hacl/ @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*blake* @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*md5* @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*sha* @Aasyaco @Ansyso @plfj @George-Codr
+**/*hashlib*                  @gpshead @picnixz
+**/*hashopenssl*              @gpshead @picnixz
+**/*hmac*                     @gpshead @picnixz
+**/*ssl*                      @gpshead @picnixz
+Modules/_hacl/                @gpshead @picnixz
+Modules/*blake*               @gpshead @picnixz
+Modules/*md5*                 @gpshead @picnixz
+Modules/*sha*                 @gpshead @picnixz
 
 # Codecs
-Modules/cjkcodecs/ @Aasyaco @Ansyso @plfj @George-Codr
-Tools/unicode/gencjkcodecs.py @Aasyaco @Ansyso @plfj @George-Codr
+Modules/cjkcodecs/            @corona10
+Tools/unicode/gencjkcodecs.py @corona10
 
 # Collections
-Doc/library/collections.abc.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/collections.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/_collections_abc.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/collections/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_collections.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_collectionsmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/collections.abc.rst  @rhettinger
+Doc/library/collections.rst      @rhettinger
+Lib/_collections_abc.py          @rhettinger
+Lib/collections/                 @rhettinger
+Lib/test/test_collections.py     @rhettinger
+Modules/_collectionsmodule.c     @rhettinger
 
 # Colorize
-Lib/_colorize.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test__colorize.py @Aasyaco @Ansyso @plfj @George-Codr
+Lib/_colorize.py              @hugovk
+Lib/test/test__colorize.py    @hugovk
 
 # Config Parser
-Lib/configparser.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_configparser.py @Aasyaco @Ansyso @plfj @George-Codr
+Lib/configparser.py           @jaraco
+Lib/test/test_configparser.py @jaraco
 
 # Dataclasses
-Doc/library/dataclasses.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/dataclasses.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_dataclasses/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/dataclasses.rst   @ericvsmith
+Lib/dataclasses.py            @ericvsmith
+Lib/test/test_dataclasses/    @ericvsmith
 
 # Dates and times
-Doc/**/*time.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/datetime-* @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/zoneinfo.rst @Aasyaco @Ansyso @plfj @George-Codr
-Include/datetime.h @Aasyaco @Ansyso @plfj @George-Codr
-Include/internal/pycore_time.h @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_zoneinfo/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/zoneinfo/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/*time.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/datetimetester.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_*time.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*zoneinfo* @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*time* @Aasyaco @Ansyso @plfj @George-Codr
-Python/pytime.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/**/*time.rst                 @pganssle @abalkin
+Doc/library/datetime-*           @pganssle
+Doc/library/zoneinfo.rst         @pganssle
+Include/datetime.h               @pganssle @abalkin
+Include/internal/pycore_time.h   @pganssle @abalkin
+Lib/test/test_zoneinfo/          @pganssle
+Lib/zoneinfo/                    @pganssle
+Lib/*time.py                     @pganssle @abalkin
+Lib/test/datetimetester.py       @pganssle @abalkin
+Lib/test/test_*time.py           @pganssle @abalkin
+Modules/*zoneinfo*               @pganssle
+Modules/*time*                   @pganssle @abalkin
+Python/pytime.c                  @pganssle @abalkin
 
 # Dbm
-Doc/library/dbm.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/dbm/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_dbm*.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*dbm* @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/dbm.rst           @corona10 @erlend-aasland @serhiy-storchaka
+Lib/dbm/                      @corona10 @erlend-aasland @serhiy-storchaka
+Lib/test/test_dbm*.py         @corona10 @erlend-aasland @serhiy-storchaka
+Modules/*dbm*                 @corona10 @erlend-aasland @serhiy-storchaka
 
 # Email and related
-**/*mail* @Aasyaco @Ansyso @plfj @George-Codr
-**/*smtp* @Aasyaco @Ansyso @plfj @George-Codr
-**/*mime* @Aasyaco @Ansyso @plfj @George-Codr
-**/*imap* @Aasyaco @Ansyso @plfj @George-Codr
-**/*poplib* @Aasyaco @Ansyso @plfj @George-Codr
+**/*mail*                     @python/email-team
+**/*smtp*                     @python/email-team
+**/*mime*                     @python/email-team
+**/*imap*                     @python/email-team
+**/*poplib*                   @python/email-team
 
 # Ensurepip
-Doc/library/ensurepip.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/ensurepip/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_ensurepip.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/ensurepip.rst     @pfmoore @pradyunsg
+Lib/ensurepip/                @pfmoore @pradyunsg
+Lib/test/test_ensurepip.py    @pfmoore @pradyunsg
 
 # Enum
-Doc/howto/enum.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/enum.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/enum.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_enum.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_json/test_enum.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/howto/enum.rst               @ethanfurman
+Doc/library/enum.rst             @ethanfurman
+Lib/enum.py                      @ethanfurman
+Lib/test/test_enum.py            @ethanfurman
+Lib/test/test_json/test_enum.py  @ethanfurman
 
 # FTP
-Doc/library/ftplib.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/ftplib.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_ftplib.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/ftplib.rst        @giampaolo
+Lib/ftplib.py                 @giampaolo
+Lib/test/test_ftplib.py       @giampaolo
 
 # Functools
-Doc/library/functools.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/functools.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_functools.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_functoolsmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/functools.rst     @rhettinger
+Lib/functools.py              @rhettinger
+Lib/test/test_functools.py    @rhettinger
+Modules/_functoolsmodule.c    @rhettinger
 
 # Garbage collector
-Modules/gcmodule.c @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/gc.rst @Aasyaco @Ansyso @plfj @George-Codr
-InternalDocs/garbage_collector.md @Aasyaco @Ansyso @plfj @George-Codr
+Modules/gcmodule.c                @pablogsal
+Doc/library/gc.rst                @pablogsal
+InternalDocs/garbage_collector.md @pablogsal
 
 # Gettext
-Doc/library/gettext.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/gettext.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_gettext.py @Aasyaco @Ansyso @plfj @George-Codr
-Tools/i18n/pygettext.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/gettext.rst       @tomasr8
+Lib/gettext.py                @tomasr8
+Lib/test/test_gettext.py      @tomasr8
+Tools/i18n/pygettext.py       @tomasr8
 
 # Heapq
-Doc/library/heapq* @Aasyaco @Ansyso @plfj @George-Codr
-Lib/heapq.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_heapq.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_heapqmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/heapq*            @rhettinger
+Lib/heapq.py                  @rhettinger
+Lib/test/test_heapq.py        @rhettinger
+Modules/_heapqmodule.c        @rhettinger
 
 # HTML
-Doc/library/html* @Aasyaco @Ansyso @plfj @George-Codr
-Lib/html/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/_markupbase.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_html*.py @Aasyaco @Ansyso @plfj @George-Codr
-Tools/build/parse_html5_entities.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/html*                   @ezio-melotti
+Lib/html/                           @ezio-melotti
+Lib/_markupbase.py                  @ezio-melotti
+Lib/test/test_html*.py              @ezio-melotti
+Tools/build/parse_html5_entities.py @ezio-melotti
 
 # IDLE
-Doc/library/idle.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/idlelib/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/turtledemo/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/idle.rst          @terryjreedy
+Lib/idlelib/                  @terryjreedy
+Lib/turtledemo/               @terryjreedy
 
 # importlib.metadata
-Doc/library/importlib.metadata.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/importlib/metadata/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_importlib/metadata/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/importlib.metadata.rst  @jaraco @warsaw
+Lib/importlib/metadata/             @jaraco @warsaw
+Lib/test/test_importlib/metadata/   @jaraco @warsaw
 
 # importlib.resources
-Doc/library/importlib.resources.abc.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/importlib.resources.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/importlib/resources/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_importlib/resources/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/importlib.resources.abc.rst   @jaraco @warsaw
+Doc/library/importlib.resources.rst       @jaraco @warsaw
+Lib/importlib/resources/                  @jaraco @warsaw @FFY00
+Lib/test/test_importlib/resources/        @jaraco @warsaw @FFY00
 
 # Itertools
-Doc/library/itertools.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_itertools.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/itertoolsmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/itertools.rst     @rhettinger
+Lib/test/test_itertools.py    @rhettinger
+Modules/itertoolsmodule.c     @rhettinger
 
 # Logging
-Doc/**/logging* @Aasyaco @Ansyso @plfj @George-Codr
-Lib/logging/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_logging.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/**/logging*               @vsajip
+Lib/logging/                  @vsajip
+Lib/test/test_logging.py      @vsajip
 
 # Multiprocessing
-Doc/library/multiprocessing*.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/multiprocessing/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/*multiprocessing.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_multiprocessing*/ @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_multiprocessing/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/multiprocessing*.rst @gpshead
+Lib/multiprocessing/             @gpshead
+Lib/test/*multiprocessing.py     @gpshead
+Lib/test/test_multiprocessing*/  @gpshead
+Modules/_multiprocessing/        @gpshead
 
 # Pathlib
-Doc/library/pathlib.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/pathlib/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_pathlib/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/pathlib.rst       @barneygale
+Lib/pathlib/                  @barneygale
+Lib/test/test_pathlib/        @barneygale
 
 # Pdb & Bdb
-Doc/library/bdb.rst @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/pdb.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/bdb.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/pdb.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_bdb.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_pdb.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_remote_pdb.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/bdb.rst           @gaogaotiantian
+Doc/library/pdb.rst           @gaogaotiantian
+Lib/bdb.py                    @gaogaotiantian
+Lib/pdb.py                    @gaogaotiantian
+Lib/test/test_bdb.py          @gaogaotiantian
+Lib/test/test_pdb.py          @gaogaotiantian
+Lib/test/test_remote_pdb.py   @gaogaotiantian
 
 # Pydoc
-Lib/pydoc.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/pydoc_data/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_pydoc/ @Aasyaco @Ansyso @plfj @George-Codr
+Lib/pydoc.py                  @AA-Turner
+Lib/pydoc_data/               @AA-Turner
+Lib/test/test_pydoc/          @AA-Turner
 
 # Profiling (Sampling)
-Doc/library/profiling*.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/profiling/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_profiling/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/profiling*.rst    @pablogsal
+Lib/profiling/                @pablogsal
+Lib/test/test_profiling/      @pablogsal
 
 # PyREPL
-Lib/_pyrepl/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_pyrepl/ @Aasyaco @Ansyso @plfj @George-Codr
+Lib/_pyrepl/                  @pablogsal @lysnikolaou @ambv
+Lib/test/test_pyrepl/         @pablogsal @lysnikolaou @ambv
 
 # Random
-Doc/library/random.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/random.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_random.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_randommodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/random.rst        @rhettinger
+Lib/random.py                 @rhettinger
+Lib/test/test_random.py       @rhettinger
+Modules/_randommodule.c       @rhettinger
 
 # Shutil
-Doc/library/shutil.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/shutil.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_shutil.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/shutil.rst        @giampaolo
+Lib/shutil.py                 @giampaolo
+Lib/test/test_shutil.py       @giampaolo
 
 # Site
-Lib/site.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_site.py @Aasyaco @Ansyso @plfj @George-Codr
-Doc/library/site.rst @Aasyaco @Ansyso @plfj @George-Codr
+Lib/site.py                   @FFY00
+Lib/test/test_site.py         @FFY00
+Doc/library/site.rst          @FFY00
 
 # string.templatelib
-Doc/library/string.templatelib.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/string/templatelib.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_string/test_templatelib.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/string.templatelib.rst        @lysnikolaou @AA-Turner
+Lib/string/templatelib.py                 @lysnikolaou @AA-Turner
+Lib/test/test_string/test_templatelib.py  @lysnikolaou @AA-Turner
 
 # Sysconfig
-**/*sysconfig* @Aasyaco @Ansyso @plfj @George-Codr
+**/*sysconfig*                @FFY00
 
 # SQLite 3
-Doc/library/sqlite3.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/sqlite3/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_sqlite3/ @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_sqlite/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/sqlite3.rst       @berkerpeksag @erlend-aasland
+Lib/sqlite3/                  @berkerpeksag @erlend-aasland
+Lib/test/test_sqlite3/        @berkerpeksag @erlend-aasland
+Modules/_sqlite/              @berkerpeksag @erlend-aasland
 
 # Subprocess
-Lib/subprocess.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_subprocess.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/*subprocess* @Aasyaco @Ansyso @plfj @George-Codr
+Lib/subprocess.py             @gpshead
+Lib/test/test_subprocess.py   @gpshead
+Modules/*subprocess*          @gpshead
 
 # Tarfile
-Doc/library/tarfile.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/tarfile.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_tarfile.py @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/tarfile.rst       @ethanfurman
+Lib/tarfile.py                @ethanfurman
+Lib/test/test_tarfile.py      @ethanfurman
 
 # TOML
-Doc/library/tomllib.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_tomllib/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/tomllib/ @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/tomllib.rst       @encukou @hauntsaninja
+Lib/test/test_tomllib/        @encukou @hauntsaninja
+Lib/tomllib/                  @encukou @hauntsaninja
 
 # Typing
-Doc/library/typing.rst @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_typing.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/typinganndata/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/typing.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_typingmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Doc/library/typing.rst        @JelleZijlstra @AlexWaygood
+Lib/test/test_typing.py       @JelleZijlstra @AlexWaygood
+Lib/test/typinganndata/       @JelleZijlstra @AlexWaygood
+Lib/typing.py                 @JelleZijlstra @AlexWaygood
+Modules/_typingmodule.c       @JelleZijlstra @AlexWaygood
 
 # Types
-Lib/test/test_types.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/types.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_typesmodule.c @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_types.py        @AA-Turner
+Lib/types.py                  @AA-Turner
+Modules/_typesmodule.c        @AA-Turner
 
 # Unittest
-Lib/unittest/mock.py @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_unittest/testmock/ @Aasyaco @Ansyso @plfj @George-Codr
+Lib/unittest/mock.py             @cjw296
+Lib/test/test_unittest/testmock/ @cjw296
 
 # Urllib
-**/*robotparser* @Aasyaco @Ansyso @plfj @George-Codr
+**/*robotparser*              @berkerpeksag
 
 # Venv
-**/*venv* @Aasyaco @Ansyso @plfj @George-Codr
+**/*venv*                     @vsajip @FFY00
 
 # Weakref
-**/*weakref* @Aasyaco @Ansyso @plfj @George-Codr
+**/*weakref*                  @kumaraditya303
 
 # Zipfile.Path
-Lib/test/test_zipfile/_path/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/zipfile/_path/ @Aasyaco @Ansyso @plfj @George-Codr
+Lib/test/test_zipfile/_path/  @jaraco
+Lib/zipfile/_path/            @jaraco
 
 # Zstandard
-Lib/compression/zstd/ @Aasyaco @Ansyso @plfj @George-Codr
-Lib/test/test_zstd.py @Aasyaco @Ansyso @plfj @George-Codr
-Modules/_zstd/ @Aasyaco @Ansyso @plfj @George-Codr
+Lib/compression/zstd/         @AA-Turner @emmatyping
+Lib/test/test_zstd.py         @AA-Turner @emmatyping
+Modules/_zstd/                @AA-Turner @emmatyping
 
 # ----------------------------------------------------------------------------
 
@@ -645,10 +645,10 @@ Modules/_zstd/ @Aasyaco @Ansyso @plfj @George-Codr
 # because the final matching pattern will take precedence.
 
 # Exclude .mailmap from being owned by @python/email-team
-.mailmap @Aasyaco @Ansyso @plfj @George-Codr
+.mailmap
 
 # Exclude Argument Clinic directories
-Modules/**/clinic/ @Aasyaco @Ansyso @plfj @George-Codr
-Objects/**/clinic/ @Aasyaco @Ansyso @plfj @George-Codr
-PC/**/clinic/ @Aasyaco @Ansyso @plfj @George-Codr
-Python/**/clinic/ @Aasyaco @Ansyso @plfj @George-Codr
+Modules/**/clinic/
+Objects/**/clinic/
+PC/**/clinic/
+Python/**/clinic/
