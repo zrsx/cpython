@@ -35,6 +35,7 @@ from .utils import (
     unspecified,
     write_file,
 )
+from . import cpp
 
 
 __all__ = [
@@ -42,6 +43,9 @@ __all__ = [
     "ClinicError",
     "warn",
     "fail",
+
+    # Submodules
+    "cpp",
 
     # Formatting helpers
     "SIG_END_MARKER",
