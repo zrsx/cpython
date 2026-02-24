@@ -1,9 +1,9 @@
 This is Python version 3.15.0 alpha 6
 =====================================
 
-.. image:: https://github.com/python/cpython/actions/workflows/build.yml/badge.svg?branch=main&event=push
+.. image:: https://github.com/zrsx/cpython/actions/workflows/build.yml/badge.svg?branch=main&event=push
    :alt: CPython build status on GitHub Actions
-   :target: https://github.com/python/cpython/actions
+   :target: https://github.com/zrsx/cpython/actions
 
 .. image:: https://dev.azure.com/python/cpython/_apis/build/status/Azure%20Pipelines%20CI?branchName=main
    :alt: CPython build status on Azure DevOps
@@ -24,8 +24,8 @@ General Information
 -------------------
 
 - Website: https://www.python.org
-- Source code: https://github.com/python/cpython
-- Issue tracker: https://github.com/python/cpython/issues
+- Source code: https://github.com/zrsx/cpython
+- Issue tracker: https://github.com/zrsx/cpython/issues
 - Documentation: https://docs.python.org
 - Developer's Guide: https://devguide.python.org/
 
