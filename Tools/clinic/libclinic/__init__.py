@@ -23,6 +23,7 @@ from .identifiers import (
     is_legal_c_identifier,
     is_legal_py_identifier,
 )
+from . import cpp
 from .utils import (
     FormatCounterFormatter,
     NULL,
@@ -60,6 +61,9 @@ __all__ = [
     "ensure_legal_c_identifier",
     "is_legal_c_identifier",
     "is_legal_py_identifier",
+
+    # Submodules
+    "cpp",
 
     # Utility functions
     "FormatCounterFormatter",
