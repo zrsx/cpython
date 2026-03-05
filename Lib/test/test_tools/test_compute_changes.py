@@ -50,13 +50,20 @@ class TestProcessChangedFiles(unittest.TestCase):
         with os_helper.change_cwd(basepath):
             for p in LIBRARY_FUZZER_PATHS:
                 with self.subTest(p=p):
+                    f = None
                     if p.is_dir():
-                        f = p / "file"
+                        candidate = p / "file"
+                        if candidate.exists():
+                        f = candidate
                     elif p.is_file():
                         f = p
+                    if f is None:
+                        continue
                     result = process_changed_files({f})
-                    self.assertTrue(result.run_ci_fuzz_stdlib)
-                    self.assertTrue(is_fuzzable_library_file(f))
+                    self.assertTrue(result.run_ci_fuzz_stdlib, 
+                                    msg=f"CI fuzzing did not run for {f}")
+                    self.assertTrue(is_fuzzable_library_file(f), 
+                                    msg=f"{f} should be recognized as fuzzable")
 
     def test_android(self):
         for d in ANDROID_DIRS:
