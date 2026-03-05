@@ -571,8 +571,15 @@ def temp_dir(path=None, quiet=False):
             try:
                 from shutil import rmtree
                 rmtree(path)
-            except Exception:
-                pass
+            except Exception as exc:
+                # Best-effort cleanup: ignore failures when removing the
+                # temporary directory, but log them for debugging purposes.
+                logging.getLogger(__name__).debug(
+                    "Failed to remove temporary directory %r during cleanup: %s",
+                    path,
+                    exc,
+                    exc_info=exc,
+                )
 
 
 @contextlib.contextmanager
