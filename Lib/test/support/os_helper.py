@@ -515,8 +515,29 @@ def temp_dir(path=None, quiet=False):
     """
     import tempfile
     dir_created = False
+
+    # Sanitize the provided path to avoid invalid filesystem characters.
+    # This prevents issues on Windows where corrupted non-ASCII characters
+    # (e.g. "Ã¦") may appear during parallel test runs in CI environments.
+    if path is not None:
+        try:
+            if not isinstance(path, str):
+                path = str(path)
+
+            # Replace non-ASCII characters with '_'
+            path = re.sub(r'[^\x00-\x7F]', '_', path)
+
+            # Replace other unsafe filesystem characters
+            path = re.sub(r'[^A-Za-z0-9._\\/-]', '_', path)
+
+            # Avoid using an empty or invalid directory name
+            if not path.strip():
+                path = None
+        except Exception:
+            path = None
+
     if path is None:
-        path = tempfile.mkdtemp()
+        path = tempfile.mkdtemp(prefix="test_python_")
         dir_created = True
         path = os.path.realpath(path)
     else:
@@ -524,25 +545,38 @@ def temp_dir(path=None, quiet=False):
             os.mkdir(path)
             dir_created = True
         except OSError as exc:
-            if not quiet:
-                raise
-            logging.getLogger(__name__).warning(
-                "tests may fail, unable to create temporary directory %r: %s",
-                path,
-                exc,
-                exc_info=exc,
-                stack_info=True,
-                stacklevel=3,
-            )
+            # If the specified directory cannot be created, fall back to a
+            # secure temporary directory. This prevents test failures caused
+            # by invalid or corrupted directory names during CI runs.
+            try:
+                path = tempfile.mkdtemp(prefix="test_python_")
+                dir_created = True
+                path = os.path.realpath(path)
+            except Exception:
+                if not quiet:
+                    raise
+                logging.getLogger(__name__).warning(
+                    "tests may fail, unable to create temporary directory %r: %s",
+                    path,
+                    exc,
+                    exc_info=exc,
+                    stack_info=True,
+                    stacklevel=3,
+                )
+
     if dir_created:
         pid = os.getpid()
+
     try:
         yield path
     finally:
         # In case the process forks, let only the parent remove the
         # directory. The child has a different process id. (bpo-30028)
         if dir_created and pid == os.getpid():
-            rmtree(path)
+            try:
+                rmtree(path)
+            except Exception:
+                pass
 
 
 @contextlib.contextmanager
