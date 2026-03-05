@@ -512,30 +512,29 @@ def temp_dir(path=None, quiet=False):
         on error.  Otherwise, if the path is specified and cannot be
         created, only a warning is issued.
 
+    This function sanitizes non-ASCII and unsafe characters to prevent
+    Windows CI failures, and falls back to tempfile.mkdtemp() if creation fails.
     """
     import tempfile
+
     dir_created = False
 
     # Sanitize the provided path to avoid invalid filesystem characters.
-    # This prevents issues on Windows where corrupted non-ASCII characters
-    # (e.g. "Ã¦") may appear during parallel test runs in CI environments.
     if path is not None:
         try:
             if not isinstance(path, str):
                 path = str(path)
-
-            # Replace non-ASCII characters with '_'
+            # Replace non-ASCII characters with "_"
             path = re.sub(r'[^\x00-\x7F]', '_', path)
-
-            # Replace other unsafe filesystem characters
+            # Replace unsafe filesystem characters
             path = re.sub(r'[^A-Za-z0-9._\\/-]', '_', path)
-
-            # Avoid using an empty or invalid directory name
+            # Prevent empty or broken names
             if not path.strip():
                 path = None
-        except Exception:
+        except BaseException:
             path = None
 
+    # If path is None or mkdir fails, use mkdtemp
     if path is None:
         path = tempfile.mkdtemp(prefix="test_python_")
         dir_created = True
@@ -544,15 +543,12 @@ def temp_dir(path=None, quiet=False):
         try:
             os.mkdir(path)
             dir_created = True
-        except OSError as exc:
-            # If the specified directory cannot be created, fall back to a
-            # secure temporary directory. This prevents test failures caused
-            # by invalid or corrupted directory names during CI runs.
+        except OSError:
             try:
                 path = tempfile.mkdtemp(prefix="test_python_")
                 dir_created = True
                 path = os.path.realpath(path)
-            except Exception:
+            except BaseException as exc:
                 if not quiet:
                     raise
                 logging.getLogger(__name__).warning(
@@ -570,10 +566,10 @@ def temp_dir(path=None, quiet=False):
     try:
         yield path
     finally:
-        # In case the process forks, let only the parent remove the
-        # directory. The child has a different process id. (bpo-30028)
+        # In case the process forks, only parent removes the directory
         if dir_created and pid == os.getpid():
             try:
+                from shutil import rmtree
                 rmtree(path)
             except Exception:
                 pass
