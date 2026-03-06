@@ -512,74 +512,37 @@ def temp_dir(path=None, quiet=False):
         on error.  Otherwise, if the path is specified and cannot be
         created, only a warning is issued.
 
-    This function sanitizes non-ASCII and unsafe characters to prevent
-    Windows CI failures, and falls back to tempfile.mkdtemp() if creation fails.
     """
     import tempfile
-
     dir_created = False
-
-    # Sanitize the provided path to avoid invalid filesystem characters.
-    if path is not None:
-        try:
-            if not isinstance(path, str):
-                path = str(path)
-            # Replace non-ASCII characters with "_"
-            path = re.sub(r'[^\x00-\x7F]', '_', path)
-            # Replace unsafe filesystem characters
-            path = re.sub(r'[^A-Za-z0-9._\\/-]', '_', path)
-            # Prevent empty or broken names
-            if not path.strip():
-                path = None
-        except Exception:
-            path = None
-
-    # If path is None or mkdir fails, use mkdtemp
     if path is None:
-        path = tempfile.mkdtemp(prefix="test_python_")
+        path = tempfile.mkdtemp()
         dir_created = True
         path = os.path.realpath(path)
     else:
         try:
-            rmtree(path)
             os.mkdir(path)
             dir_created = True
-        except OSError:
-            try:
-                path = tempfile.mkdtemp(prefix="test_python_")
-                dir_created = True
-                path = os.path.realpath(path)
-            except Exception as exc:
-                if not quiet:
-                    raise
-                logging.getLogger(__name__).warning(
-                    "tests may fail, unable to create temporary directory %r: %s",
-                    path,
-                    exc,
-                    exc_info=exc,
-                    stack_info=True,
-                    stacklevel=3,
-                )
-
+        except OSError as exc:
+            if not quiet:
+                raise
+            logging.getLogger(__name__).warning(
+                "tests may fail, unable to create temporary directory %r: %s",
+                path,
+                exc,
+                exc_info=exc,
+                stack_info=True,
+                stacklevel=3,
+            )
     if dir_created:
         pid = os.getpid()
-
     try:
         yield path
     finally:
-        # In case the process forks, only parent removes the directory
+        # In case the process forks, let only the parent remove the
+        # directory. The child has a different process id. (bpo-30028)
         if dir_created and pid == os.getpid():
-            try:
-                rmtree(path)
-            except Exception as exc:
-                # Best-effort cleanup: ignore failures when removing the
-                # temporary directory, but log them for debugging purposes.
-                logging.getLogger(__name__).debug(
-                    "Failed to remove temporary directory %r during cleanup: %s",
-                    path,
-                    exc,
-                    exc_info=exc,
-                )
+            rmtree(path)
 
 
 @contextlib.contextmanager
