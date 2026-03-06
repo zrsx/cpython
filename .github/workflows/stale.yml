@@ -6,7 +6,7 @@ on:
 
 jobs:
   stale:
-    if: github.repository_owner == 'python'
+    if: github.repository_owner == 'zrsx'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
