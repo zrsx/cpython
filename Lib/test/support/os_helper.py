@@ -541,7 +541,7 @@ def temp_dir(path=None, quiet=False):
         path = os.path.realpath(path)
     else:
         try:
-            rmtree(path, ignore_errors=True)
+            rmtree(path)
             os.mkdir(path)
             dir_created = True
         except OSError:
@@ -570,7 +570,6 @@ def temp_dir(path=None, quiet=False):
         # In case the process forks, only parent removes the directory
         if dir_created and pid == os.getpid():
             try:
-                from shutil import rmtree
                 rmtree(path)
             except Exception as exc:
                 # Best-effort cleanup: ignore failures when removing the
