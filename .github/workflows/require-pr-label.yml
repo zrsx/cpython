@@ -7,7 +7,7 @@ on:
 jobs:
   label-dnm:
     name: DO-NOT-MERGE
-    if: github.repository_owner == 'python'
+    if: github.repository_owner == 'zrsx'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
@@ -24,7 +24,7 @@ jobs:
 
   label-reviews:
     name: Unresolved review
-    if: github.repository_owner == 'python'
+    if: github.repository_owner == 'zrsx'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
