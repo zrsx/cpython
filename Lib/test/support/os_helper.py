@@ -531,7 +531,7 @@ def temp_dir(path=None, quiet=False):
             # Prevent empty or broken names
             if not path.strip():
                 path = None
-        except BaseException:
+        except Exception:
             path = None
 
     # If path is None or mkdir fails, use mkdtemp
@@ -541,6 +541,7 @@ def temp_dir(path=None, quiet=False):
         path = os.path.realpath(path)
     else:
         try:
+            rmtree(path, ignore_errors=True)
             os.mkdir(path)
             dir_created = True
         except OSError:
@@ -548,7 +549,7 @@ def temp_dir(path=None, quiet=False):
                 path = tempfile.mkdtemp(prefix="test_python_")
                 dir_created = True
                 path = os.path.realpath(path)
-            except BaseException as exc:
+            except Exception as exc:
                 if not quiet:
                     raise
                 logging.getLogger(__name__).warning(
