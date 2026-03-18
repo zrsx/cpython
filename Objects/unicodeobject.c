@@ -86,14 +86,12 @@ class Py_UCS4_converter(CConverter):
     type = 'Py_UCS4'
     converter = 'convert_uc'
 
-    def converter_init(self):
-        if self.default is not unspecified:
-            self.c_default = ascii(self.default)
-            if len(self.c_default) > 4 or self.c_default[0] != "'":
-                self.c_default = hex(ord(self.default))
+    def c_default_init(self):
+        import libclinic
+        self.c_default = libclinic.c_unichar_repr(self.default)
 
 [python start generated code]*/
-/*[python end generated code: output=da39a3ee5e6b4b0d input=88f5dd06cd8e7a61]*/
+/*[python end generated code: output=da39a3ee5e6b4b0d input=22f057b68fd9a65a]*/
 
 /* --- Globals ------------------------------------------------------------
 
@@ -5220,7 +5218,7 @@ unicode_decode_utf8_impl(_PyUnicodeWriter *writer,
             }
 
             if (_PyUnicodeWriter_Prepare(writer, end - s, 127) < 0) {
-                return -1;
+                goto onError;
             }
         }
     }
@@ -13581,7 +13579,8 @@ search_longest_common_leading_whitespace(
 }
 
 /* Dedent a string.
-   Behaviour is expected to be an exact match of `textwrap.dedent`.
+   Intended to dedent Python source. Unlike `textwrap.dedent`, this
+   only supports spaces and tabs and doesn't normalize empty lines.
    Return a new reference on success, NULL with exception set on error.
    */
 PyObject *
