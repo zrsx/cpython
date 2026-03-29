@@ -132,7 +132,10 @@ Tools/c-analyzer/ @zrsx/core-dev
 Tools/check-c-api-docs/ @zrsx/core-dev
 
 # Fuzzing
-=======
+# Fuzzing
+Modules/_xxtestfuzz/                    `@zrsx/core-dev`
+Lib/test/test_xxtestfuzz.py             `@zrsx/core-dev`
+.github/workflows/reusable-cifuzz.yml   `@zrsx/core-dev`
 Modules/_xxtestfuzz/                    @zrsx/core-dev
 Lib/test/test_xxtestfuzz.py             @zrsx/core-dev
 .github/workflows/reusable-cifuzz.yml   @zrsx/core-dev
